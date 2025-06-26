@@ -27,7 +27,7 @@ async function checkBusArrival() {
   return false
 }
 
-export const workDayMorningBusArrival = new Cron('54 8 * * 1-5', async () => { // 8:54 on work days
+export const workDayMorningBusArrival = new Cron('54 8 * * 1-5', { timezone: 'Asia/Hong_Kong' }, async () => { // 8:54 on work days
   console.log('🕐 Bus morning arrival check started')
   console.log((new Date()).toISOString())
 
