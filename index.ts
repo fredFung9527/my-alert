@@ -2,9 +2,14 @@ import { config } from 'dotenv'
 config({ path: '.env' })
 
 import { Cron } from 'croner'
+import { sendPushover } from './utils/pushover'
 
-export const minlyCronJobs = new Cron('0 * * * * *', async () => {
-
+export const dailyCronJobs = new Cron('0 0 * * *', async () => {
 })
 
-console.log('🕐 Cron jobs initialized')
+async function main() {
+  await sendPushover('My Alert', 'Server started')
+  console.log('🕐 Cron jobs initialized')
+}
+
+main()
